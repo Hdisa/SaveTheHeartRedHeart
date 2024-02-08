@@ -4369,6 +4369,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 404347299192916650, guid: 5bb71ae933703ff4c854e9d353fd6e53, type: 3}
+      propertyPath: playerSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: ebf04fd23759a694c8fd4fb97d83a076, type: 2}
+    - target: {fileID: 404347299192916650, guid: 5bb71ae933703ff4c854e9d353fd6e53, type: 3}
+      propertyPath: _playerSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: ebf04fd23759a694c8fd4fb97d83a076, type: 2}
+    - target: {fileID: 418847976518402627, guid: 5bb71ae933703ff4c854e9d353fd6e53, type: 3}
+      propertyPath: playerSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: ebf04fd23759a694c8fd4fb97d83a076, type: 2}
     - target: {fileID: 1525841637189444178, guid: 5bb71ae933703ff4c854e9d353fd6e53, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

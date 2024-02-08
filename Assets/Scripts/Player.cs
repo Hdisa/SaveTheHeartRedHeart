@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float gravity = 9.8f;
-    [SerializeField] private float jumpForce = 10;
-    [SerializeField] private float speed = 10;
+    [SerializeField]private PlayerSettings playerSettings;
     private CharacterController _characterController;
     private float _fallVelocity;
     private Vector3 _moveVector;
@@ -16,6 +14,16 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        ControllerInput();
+    }
+
+    void FixedUpdate()
+    {
+        PhysicalMovement();
+    }
+    
+    private void ControllerInput()
+    {
         _moveVector = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
             _moveVector += transform.forward;
@@ -26,13 +34,13 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
             _moveVector += transform.right;
         if (Input.GetKeyDown(KeyCode.Space) && _characterController.isGrounded)
-            _fallVelocity = -jumpForce;
+            _fallVelocity = -playerSettings.jumpForce;
     }
 
-    void FixedUpdate()
+    private void PhysicalMovement()
     {
-        _characterController.Move(_moveVector * (speed * Time.fixedDeltaTime));
-        _fallVelocity += gravity * Time.fixedDeltaTime;
+        _characterController.Move(_moveVector * (playerSettings.speed * Time.fixedDeltaTime));
+        _fallVelocity += playerSettings.gravity * Time.fixedDeltaTime;
         _characterController.Move(Vector3.down * (_fallVelocity * Time.fixedDeltaTime));
         
         if (_characterController.isGrounded)
