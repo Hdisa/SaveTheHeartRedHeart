@@ -11,4 +11,11 @@ public class PlayerSettings : ScriptableObject
     public float rotationSpeed = 600;
     public float minAngle = -35;
     public float maxAngle = 89;
+    [Header("Player Input")]
+    public KeyCode forward = KeyCode.W;
+    public KeyCode left = KeyCode.A;
+    public KeyCode back = KeyCode.S;
+    public KeyCode right = KeyCode.D;
+    public KeyCode jump = KeyCode.Space;
+    
 }
