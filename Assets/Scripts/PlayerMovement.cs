@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private PlayerSettings playerSettings;
@@ -19,46 +18,44 @@ using UnityEngine;
 
         private void Start()
         {
+            InitializeComponents();
+        }
+
+        private void InitializeComponents()
+        {
             characterController = GetComponent<CharacterController>();
         }
 
         private void Update()
         {
-            _moveVector = Vector3.zero;
+            StopPlayer();
         }
 
-        private void Forward()
-        {
-            _moveVector += transform.forward;
-        }
+        private void StopPlayer() => _moveVector = Vector3.zero;
 
-        private void Left()
-        {
-            _moveVector -= transform.right;
-        }
+        private void Forward() => _moveVector += transform.forward;
 
-        private void Back()
-        {
-            _moveVector -= transform.forward;
-        }
+        private void Left() => _moveVector -= transform.right;
 
-        private void Right()
-        {
-            _moveVector += transform.right;
-        }
+        private void Back() => _moveVector -= transform.forward;
 
-        private void Jump()
-        {
-            _fallVelocity = -playerSettings.jumpForce;
-        }
+        private void Right() => _moveVector += transform.right;
+
+        private void Jump() => _fallVelocity = -playerSettings.jumpForce;
 
         private void FixedUpdate()
         {
-            characterController.Move(_moveVector * (playerSettings.speed * Time.fixedDeltaTime));
+            Move();
+            Gravity();
+        }
 
+        private void Move() => characterController.Move(_moveVector * (playerSettings.speed * Time.fixedDeltaTime));
+
+        private void Gravity()
+        {
             _fallVelocity += playerSettings.gravity * Time.fixedDeltaTime;
             characterController.Move(Vector3.down * (_fallVelocity * Time.fixedDeltaTime));
             if (characterController.isGrounded)
                 _fallVelocity = 0;
-        }
+        } 
     }

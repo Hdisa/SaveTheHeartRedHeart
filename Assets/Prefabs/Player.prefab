@@ -293,10 +293,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2107e0560de7a44385a5bd2b7e605ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 600
+  playerSettings: {fileID: 0}
   cameraAxisTransform: {fileID: 2040013647386372905}
-  minAngle: -35
-  maxAngle: 89
 --- !u!114 &404347299192916650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,7 +329,7 @@ CharacterController:
   m_Height: 2
   m_Radius: 0.5
   m_SlopeLimit: 45
-  m_StepOffset: 0.3
+  m_StepOffset: 0.5
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}

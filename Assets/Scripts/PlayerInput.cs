@@ -13,15 +13,18 @@ public class PlayerInput : MonoBehaviour
 
     private void Start()
     {
+        InitializeComponents();
+    }
+    
+    private void InitializeComponents()
+    {
         characterController = GetComponent<CharacterController>();
     }
 
     private void Update()
     {
         if (Input.GetKey(playerSettings.forward))
-        {
             OnMoveForward.Invoke();
-        }
         if (Input.GetKey(playerSettings.left))
             OnMoveLeft.Invoke();
         if (Input.GetKey(playerSettings.back))
