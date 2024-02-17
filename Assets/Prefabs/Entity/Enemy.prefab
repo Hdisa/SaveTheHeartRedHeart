@@ -223,6 +223,8 @@ GameObject:
   - component: {fileID: 6184217651244463090}
   - component: {fileID: -9002025437729989387}
   - component: {fileID: 8724719529707480852}
+  - component: {fileID: 2146693488215591656}
+  - component: {fileID: 2490798897780766920}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -259,6 +261,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b87f02321e3264aaa629230abf6e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolPoints: []
+  player: {fileID: 0}
+  viewAngle: 90
 --- !u!195 &8724719529707480852
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -281,3 +286,39 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2146693488215591656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8070085063664519664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8e3bd6e78bab734aa13ba7d4504f0cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthCount: 100
+--- !u!136 &2490798897780766920
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8070085063664519664}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
