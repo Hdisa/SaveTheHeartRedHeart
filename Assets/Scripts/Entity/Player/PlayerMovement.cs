@@ -48,6 +48,15 @@ using UnityEngine;
             Move();
             Gravity();
         }
+        
+        private void OnDisable()
+        {
+            PlayerInput.OnMoveForward -= Forward;
+            PlayerInput.OnMoveLeft -= Left;
+            PlayerInput.OnMoveBack -= Back;
+            PlayerInput.OnMoveRight -= Right;
+            PlayerInput.OnJump -= Jump;
+        }
 
         private void Move() => characterController.Move(_moveVector * (playerSettings.speed * Time.fixedDeltaTime));
 

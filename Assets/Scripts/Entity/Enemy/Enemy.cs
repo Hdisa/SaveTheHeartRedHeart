@@ -7,8 +7,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private List<Transform> patrolPoints;
     [SerializeField] private Player player;
     [SerializeField] private float viewAngle;
+    [SerializeField] private float damage = 30;
     private NavMeshAgent _navMeshAgent;
     private bool _isPlayerDetected;
+    private Health _playerHealth;
     
     void Start()
     {
@@ -19,6 +21,7 @@ public class Enemy : MonoBehaviour
     private void InitializeComponents()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _playerHealth = player.GetComponent<Health>();
     }
     
     void Update()
@@ -26,6 +29,7 @@ public class Enemy : MonoBehaviour
         DetectPlayer();
         FollowPlayer();
         PatrolUpdate();
+        Attack();
     }
 
     private void DetectPlayer()
@@ -48,10 +52,18 @@ public class Enemy : MonoBehaviour
     {
         if (_isPlayerDetected)
             _navMeshAgent.destination = player.transform.position;
-    } 
+    }
+
+    private void Attack()
+    {
+        if (_isPlayerDetected && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+        {
+            _playerHealth.SubtractHealth(damage * Time.deltaTime);
+        }
+    }
     private void PatrolUpdate()
     {
-        if (_navMeshAgent.remainingDistance == 0 && !_isPlayerDetected)
+        if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance && !_isPlayerDetected)
             PickupNewPatrolPoint();
     }
 
