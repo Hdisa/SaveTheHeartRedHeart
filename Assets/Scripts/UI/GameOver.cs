@@ -8,7 +8,7 @@ public class GameOver : MonoBehaviour
 
     private void OnEnable()
     {
-        Health.PlayerIsDead += ShowGameOver;
+        EventBus.IsDead += ShowGameOver;
     }
 
     private void Update()
@@ -18,7 +18,7 @@ public class GameOver : MonoBehaviour
 
     private void OnDisable()
     {
-        Health.PlayerIsDead -= ShowGameOver;
+        EventBus.IsDead -= ShowGameOver;
     }
 
     private void ShowGameOver()
@@ -29,7 +29,7 @@ public class GameOver : MonoBehaviour
 
     private void RestartScene()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && gameOverUI.activeInHierarchy)
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

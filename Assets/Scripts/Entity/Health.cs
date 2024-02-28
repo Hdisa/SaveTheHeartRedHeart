@@ -1,43 +1,24 @@
-using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
     [SerializeField] private float healthCount = 100;
-    [SerializeField] private RectTransform valueRectTransform;
-    private float _maxHealth;
-    
-    public static Action PlayerIsDead;
+    public float MaxHealth { get; private set; }
 
     private void Start()
     {
-        _maxHealth = healthCount;
-        ShowHealthBar();
+        MaxHealth = healthCount;
+    }
+
+    private void Update()
+    {
+        if (healthCount <= 0) Destroy(gameObject);
     }
 
     public void SubtractHealth(float damage)
     {
         healthCount -= damage;
-        if (healthCount <= 0) DestroyEntity();
-        ShowHealthBar();
-    }
-
-    private void ShowHealthBar()
-    {
-        valueRectTransform.anchorMax = new Vector2(healthCount/_maxHealth, 1);
-    }
-
-    private void DestroyEntity()
-    {
-        var isPlayer = TryGetComponent(out Player player);
-        if (isPlayer)
-        {
-            PlayerIsDead.Invoke();
-            player.GetComponent<PlayerMovement>().enabled = false;
-            player.GetComponent<CameraRotation>().enabled = false;
-            player.GetComponent<FireballCaster>().enabled = false;
-            return;
-        }
-        Destroy(gameObject);
+        if (TryGetComponent(out Player player))
+            EventBus.UpdateHealthBar?.Invoke(healthCount);
     }
 }

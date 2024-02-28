@@ -5,6 +5,7 @@ public class Fireball : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float lifetime;
     [SerializeField] private int damage = 10;
+    public Vector3 Direction { get; set; }
 
     private void Start()
     {
@@ -13,23 +14,16 @@ public class Fireball : MonoBehaviour
 
     void FixedUpdate()
     {
-        BulletMove();
+        transform.position += Direction * (speed * Time.deltaTime);
     }
-
-    void BulletMove() => transform.position += transform.forward * (speed * Time.deltaTime);
 
     void OnCollisionEnter(Collision other)
     {
-        DealDamage(other);
-        DestroyItself();
+        if (other.transform.root.TryGetComponent(out Health entityHealth))
+            entityHealth.SubtractHealth(damage);
+        
+        Destroy(gameObject);
     }
 
-    void DealDamage(Collision enemy)
-    {
-        var enemyHealth = enemy.transform.parent.gameObject.GetComponent<Health>();
-        if (enemyHealth != null)
-            enemyHealth.SubtractHealth(damage);
-    }
-
-    void DestroyItself() => Destroy(gameObject);
+    private void DestroyItself() => Destroy(gameObject);
 }

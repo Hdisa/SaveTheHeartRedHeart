@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class FireballCaster : MonoBehaviour
 {
-    [SerializeField] private Fireball fireball;
-    [SerializeField] private Transform bulletShot;
+    [SerializeField] private Fireball fireballPrefab;
+    [SerializeField] private Transform bulletSource;
 
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
-            Shoot();
+        {
+            Fireball fireball = Instantiate(fireballPrefab, bulletSource.position, transform.rotation); 
+            fireball.Direction = bulletSource.forward;
+        }
+            
     }
-
-    void Shoot() => Instantiate(fireball, bulletShot.transform.position, bulletShot.transform.rotation);
 }

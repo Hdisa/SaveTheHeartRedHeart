@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     {
         var direction = player.transform.position - transform.position;
         _isPlayerDetected = false;
-    
+
         bool isInFieldOfView = Vector3.Angle(transform.forward, direction) < viewAngle;
 
         if (!isInFieldOfView)
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
 
         RaycastHit hit;
         var isHit = Physics.Raycast(transform.position + Vector3.up, direction, out hit);
-        if (isHit && hit.collider.transform.parent.gameObject == player.gameObject)
+        if (isHit && hit.collider.transform.root.gameObject == player.gameObject)
             _isPlayerDetected = true;
     }
 
