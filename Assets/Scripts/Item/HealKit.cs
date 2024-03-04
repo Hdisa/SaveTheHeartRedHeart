@@ -6,8 +6,10 @@ public class HealKit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        var healthEntity = FindObjectOfType<Player>().GetComponent<Health>();
-        healthEntity.AddHealth(healPoint);
-        Destroy(gameObject);
+        if (other.GetComponent<Player>().TryGetComponent(out Health entityHealth))
+        {
+            entityHealth.AddHealth(healPoint);
+            Destroy(gameObject);
+        }
     }
 }

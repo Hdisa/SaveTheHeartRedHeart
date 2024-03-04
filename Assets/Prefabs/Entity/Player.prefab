@@ -115,6 +115,37 @@ Transform:
   - {fileID: 350390498809501020}
   m_Father: {fileID: 1525841637189444178}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5649418048578844969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8510455679814644723}
+  m_Layer: 0
+  m_Name: GrenadeSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8510455679814644723
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5649418048578844969}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1525841637189444178}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6284504082107733628
 GameObject:
   m_ObjectHideFlags: 0
@@ -389,6 +420,7 @@ GameObject:
   - component: {fileID: 5671036180048902477}
   - component: {fileID: 7781643411621667602}
   - component: {fileID: 3071665610791412444}
+  - component: {fileID: 8829372251805246345}
   - component: {fileID: 7479480247703310590}
   m_Layer: 0
   m_Name: Player
@@ -414,6 +446,7 @@ Transform:
   - {fileID: 9095972380089284771}
   - {fileID: 2040013647386372905}
   - {fileID: 8596961549741977468}
+  - {fileID: 8510455679814644723}
   - {fileID: 2085407568275919909}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -511,6 +544,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 4557756548929475084, guid: a92ca5ec04cc0b74f939d4e0a7f2fc63, type: 3}
   bulletSource: {fileID: 8596961549741977468}
+--- !u!114 &8829372251805246345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8452718642355609923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afb77ee76454fd942a8c07118a91cc75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grenadePrefab: {fileID: 0}
+  bulletSource: {fileID: 0}
 --- !u!114 &7479480247703310590
 MonoBehaviour:
   m_ObjectHideFlags: 0
