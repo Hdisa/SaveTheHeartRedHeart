@@ -21,4 +21,11 @@ public class Health : MonoBehaviour
         if (TryGetComponent(out Player player))
             EventBus.UpdateHealthBar?.Invoke(healthCount);
     }
+
+    public void AddHealth(float amount)
+    {
+        healthCount += amount;
+        healthCount = Mathf.Clamp(healthCount, 0, MaxHealth);
+        EventBus.UpdateHealthBar?.Invoke(healthCount);
+    }
 }

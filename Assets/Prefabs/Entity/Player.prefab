@@ -524,7 +524,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthCount: 100
-  valueRectTransform: {fileID: 0}
 --- !u!1 &8703039196612226073
 GameObject:
   m_ObjectHideFlags: 0
