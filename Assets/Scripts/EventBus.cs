@@ -8,4 +8,8 @@ public static class EventBus
     //UI
     public static Action<float> SetHealth;
     public static Action<float> UpdateHealthBar;
+    
+    //Collectable
+    public static Action<int> OnAddHealth; // Adds health to Entity
+    public static Action<int> OnAddMana; // Adds mana to Entity
 }

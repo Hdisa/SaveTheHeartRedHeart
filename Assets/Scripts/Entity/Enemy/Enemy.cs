@@ -26,10 +26,13 @@ public class Enemy : MonoBehaviour
     
     void Update()
     {
-        DetectPlayer();
-        FollowPlayer();
+        if (player != null)
+        {
+            DetectPlayer();
+            FollowPlayer();
+            Attack();
+        }
         PatrolUpdate();
-        Attack();
     }
 
     private void DetectPlayer()
