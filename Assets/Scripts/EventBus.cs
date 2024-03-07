@@ -4,10 +4,10 @@ public static class EventBus
 {
     //Player
     public static Action IsDead;
+    public static Action<int> OnTookDamage;
     
     //UI
-    public static Action<float> SetHealth;
-    public static Action<float> UpdateHealthBar;
+    //TODO: Add more UI Events like keys, coins, show numbers;
     
     //Collectable
     public static Action<int> OnAddHealth; // Adds health to Entity

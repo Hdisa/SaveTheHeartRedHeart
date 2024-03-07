@@ -15514,6 +15514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueRectTransform: {fileID: 1448855593}
+  playerSettings: {fileID: 11400000, guid: 9f1c132dbd66eaf44bd6d9f39694e1d7, type: 2}
 --- !u!43 &1616138445
 Mesh:
   m_ObjectHideFlags: 0
@@ -19170,6 +19171,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 404347299192916650, guid: 5bb71ae933703ff4c854e9d353fd6e53, type: 3}
+      propertyPath: playerStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f1c132dbd66eaf44bd6d9f39694e1d7, type: 2}
     - target: {fileID: 404347299192916650, guid: 5bb71ae933703ff4c854e9d353fd6e53, type: 3}
       propertyPath: playerSettings
       value: 

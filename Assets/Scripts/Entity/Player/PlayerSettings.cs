@@ -1,15 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu]
+[CreateAssetMenu (menuName = "Hdisa Tools/Player Settings")]
 public class PlayerSettings : ScriptableObject
 {
-    [Header("Player Stats")] 
-    public int maxHealth = 100;
-    public int health = 100;
-    public int maxMana = 100;
-    public int mana = 100;
-    public int coins;
-    
     [Header("Player Movement")]
     public float gravity = 9.8f;
     public float jumpForce = 10;

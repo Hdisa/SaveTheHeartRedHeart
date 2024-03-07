@@ -7,10 +7,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private List<Transform> patrolPoints;
     [SerializeField] private Player player;
     [SerializeField] private float viewAngle;
-    [SerializeField] private float damage = 30;
+    [SerializeField] private int damage = 30;
+    [SerializeField] private int delayAttack = 5;
     private NavMeshAgent _navMeshAgent;
     private bool _isPlayerDetected;
-    private Health _playerHealth;
+    private bool _readyToAttack = true;
     
     void Start()
     {
@@ -21,18 +22,15 @@ public class Enemy : MonoBehaviour
     private void InitializeComponents()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _playerHealth = player.GetComponent<Health>();
     }
     
     void Update()
     {
-        if (player != null)
-        {
-            DetectPlayer();
-            FollowPlayer();
-            Attack();
-        }
+        if(!player) return;
+        DetectPlayer();
+        FollowPlayer();
         PatrolUpdate();
+        Attack();
     }
 
     private void DetectPlayer()
@@ -59,11 +57,16 @@ public class Enemy : MonoBehaviour
 
     private void Attack()
     {
-        if (_isPlayerDetected && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+        if (_isPlayerDetected && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance && _readyToAttack)
         {
-            _playerHealth.SubtractHealth(damage * Time.deltaTime);
+            EventBus.OnTookDamage?.Invoke(damage);
+            _readyToAttack = false;
+            Invoke(nameof(ResetAttack), delayAttack);
         }
     }
+
+    private void ResetAttack() => _readyToAttack = true;
+    
     private void PatrolUpdate()
     {
         if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance && !_isPlayerDetected)

@@ -389,7 +389,6 @@ GameObject:
   - component: {fileID: 5671036180048902477}
   - component: {fileID: 7781643411621667602}
   - component: {fileID: 3071665610791412444}
-  - component: {fileID: 7479480247703310590}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -443,6 +442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a43327d5cc73044b69c25ab3547baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSettings: {fileID: 0}
+  playerStats: {fileID: 0}
 --- !u!114 &2303337522234046527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,20 +512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireballPrefab: {fileID: 4557756548929475084, guid: a92ca5ec04cc0b74f939d4e0a7f2fc63, type: 3}
   bulletSource: {fileID: 8596961549741977468}
---- !u!114 &7479480247703310590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8452718642355609923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8e3bd6e78bab734aa13ba7d4504f0cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  healthCount: 100
-  valueRectTransform: {fileID: 0}
 --- !u!1 &8703039196612226073
 GameObject:
   m_ObjectHideFlags: 0
