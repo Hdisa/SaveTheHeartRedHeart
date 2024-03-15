@@ -1,29 +1,22 @@
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : Bullet
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float lifetime;
-    [SerializeField] private int damage = 10;
-    public Vector3 Direction { get; set; }
-
+    [SerializeField] private BulletSettings fireball;
     private void Start()
     {
-        Invoke("DestroyItself", lifetime);
+        BulletLifetime();
     }
 
     void FixedUpdate()
     {
-        transform.position += Direction * (speed * Time.deltaTime);
+        BulletDirection(fireball.fireballSpd);
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.transform.root.TryGetComponent(out Health entityHealth))
-            entityHealth.SubtractHealth(damage);
-        
-        Destroy(gameObject);
+        BulletDamage(other, fireball.fireballDmg);
     }
 
-    private void DestroyItself() => Destroy(gameObject);
+    internal override void DestroyItself() => Destroy(gameObject);
 }

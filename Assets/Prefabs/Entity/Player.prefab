@@ -267,7 +267,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPoint: {fileID: 2085407568275919909}
-  cameraLink: {fileID: 0}
+  cameraLink: {fileID: 2122032923825828256}
   targetInSkyDistance: 20
 --- !u!1 &7754674898517700118
 GameObject:
@@ -442,8 +442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a43327d5cc73044b69c25ab3547baa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSettings: {fileID: 0}
-  playerStats: {fileID: 0}
+  playerSettings: {fileID: 11400000, guid: ebf04fd23759a694c8fd4fb97d83a076, type: 2}
+  playerStats: {fileID: 11400000, guid: 9f1c132dbd66eaf44bd6d9f39694e1d7, type: 2}
 --- !u!114 &2303337522234046527
 MonoBehaviour:
   m_ObjectHideFlags: 0

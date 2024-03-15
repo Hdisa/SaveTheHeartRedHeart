@@ -146,6 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524bb582f6deba546b7c9ee7c5fa1f78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
-  lifetime: 5
-  damage: 10
+  bulletSettings: {fileID: 11400000, guid: dce7d10e16e4dda44bef8e78cad52032, type: 2}
+  fireball: {fileID: 11400000, guid: dce7d10e16e4dda44bef8e78cad52032, type: 2}

@@ -9,17 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1810f9ddb13261342b08f7a5093cfb98, type: 3}
-  m_Name: Player Settings
+  m_Script: {fileID: 11500000, guid: ee4fc61d3abe30c40af34b9d1646d68d, type: 3}
+  m_Name: Bullet Settings
   m_EditorClassIdentifier: 
-  gravity: 9.8
-  jumpForce: 5
-  speed: 10
-  rotationSpeed: 600
-  minAngle: -30
-  maxAngle: 30
-  forward: 119
-  left: 97
-  back: 115
-  right: 100
-  jump: 32
+  bulletLifetime: 5
+  fireballDmg: 30
+  fireballSpd: 30
+  fireballCost: 15
+  snowballDmg: 15
+  snowballSpd: 15
+  snowballCost: 10

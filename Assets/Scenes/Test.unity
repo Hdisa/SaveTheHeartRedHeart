@@ -15514,7 +15514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   valueRectTransform: {fileID: 1448855593}
-  playerSettings: {fileID: 11400000, guid: 9f1c132dbd66eaf44bd6d9f39694e1d7, type: 2}
+  playerStats: {fileID: 11400000, guid: 9f1c132dbd66eaf44bd6d9f39694e1d7, type: 2}
 --- !u!43 &1616138445
 Mesh:
   m_ObjectHideFlags: 0
