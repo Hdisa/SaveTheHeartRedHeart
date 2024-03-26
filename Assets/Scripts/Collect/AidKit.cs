@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class AidKit : MonoBehaviour, ICollectable
 {
-    [SerializeField] private int healPoint = 50;
-    [SerializeField] private PlayerSettings playerSettings;
+    [SerializeField] private int healPoint = 100;
+    [SerializeField] private PlayerStats playerStats;
 
     private void OnTriggerEnter(Collider other)
     {

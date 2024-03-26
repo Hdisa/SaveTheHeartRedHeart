@@ -6,6 +6,16 @@ using UnityEngine;
         [SerializeField] private CharacterController characterController;
         private Vector3 _moveVector;
         private float _fallVelocity;
+        private Animator _animator;
+        private AudioSource _audioSource;
+        private static readonly int IsWalk = Animator.StringToHash("isWalk");
+        private static readonly int IsJump = Animator.StringToHash("isJump");
+
+        private void Awake()
+        {
+            _animator = GetComponentInChildren<Animator>();
+            _audioSource = GetComponent<AudioSource>();
+        }
 
         private void OnEnable()
         {
@@ -28,6 +38,14 @@ using UnityEngine;
 
         private void Update()
         {
+            if (_moveVector != Vector3.zero)
+            {
+                _animator.SetBool(IsWalk, true);
+                _audioSource.PlayOneShot(Player.Clips[0]);
+            }
+            else
+                _animator.SetBool(IsWalk, false);
+            
             StopPlayer();
         }
 
@@ -41,7 +59,12 @@ using UnityEngine;
 
         private void Right() => _moveVector += transform.right;
 
-        private void Jump() => _fallVelocity = -playerSettings.jumpForce;
+        private void Jump()
+        {
+            _animator.SetTrigger(IsJump);
+            _audioSource.PlayOneShot(Player.Clips[1]);
+            _fallVelocity = -playerSettings.jumpForce;
+        }
 
         private void FixedUpdate()
         {

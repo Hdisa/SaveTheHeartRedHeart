@@ -19,10 +19,4 @@ public class Health : MonoBehaviour
     {
         healthCount -= damage;
     }
-
-    public void AddHealth(int hp)
-    {
-        healthCount += hp;
-        healthCount = Mathf.Clamp(healthCount, 0, MaxHealth);
-    }
 }
