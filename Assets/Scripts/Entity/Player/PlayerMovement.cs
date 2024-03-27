@@ -15,6 +15,7 @@ using UnityEngine;
         {
             _animator = GetComponentInChildren<Animator>();
             _audioSource = GetComponent<AudioSource>();
+            characterController = GetComponent<CharacterController>();
         }
 
         private void OnEnable()
@@ -26,43 +27,50 @@ using UnityEngine;
             PlayerInput.OnJump += Jump;
         }
 
-        private void Start()
-        {
-            InitializeComponents();
-        }
-
-        private void InitializeComponents()
-        {
-            characterController = GetComponent<CharacterController>();
-        }
-
         private void Update()
         {
+            
+            
             if (_moveVector != Vector3.zero)
             {
                 _animator.SetBool(IsWalk, true);
-                _audioSource.PlayOneShot(Player.Clips[0]);
+                if (!_audioSource.isPlaying)
+                    _audioSource.PlayOneShot(SoundEvent.Clips[0]);
             }
             else
                 _animator.SetBool(IsWalk, false);
-            
             StopPlayer();
         }
 
-        private void StopPlayer() => _moveVector = Vector3.zero;
+        private void StopPlayer()
+        {
+            _moveVector = Vector3.zero;
+        }
 
-        private void Forward() => _moveVector += transform.forward;
+        private void Forward()
+        {
+            _moveVector += transform.forward;
+        } 
 
-        private void Left() => _moveVector -= transform.right;
+        private void Left()
+        {
+            _moveVector -= transform.right;
+        }
 
-        private void Back() => _moveVector -= transform.forward;
+        private void Back()
+        {
+            _moveVector -= transform.forward;
+        }
 
-        private void Right() => _moveVector += transform.right;
+        private void Right()
+        {
+            _moveVector += transform.right;
+        }
 
         private void Jump()
         {
             _animator.SetTrigger(IsJump);
-            _audioSource.PlayOneShot(Player.Clips[1]);
+            _audioSource.PlayOneShot(SoundEvent.Clips[1]);
             _fallVelocity = -playerSettings.jumpForce;
         }
 
@@ -81,7 +89,10 @@ using UnityEngine;
             PlayerInput.OnJump -= Jump;
         }
 
-        private void Move() => characterController.Move(_moveVector * (playerSettings.speed * Time.fixedDeltaTime));
+        private void Move()
+        {
+            characterController.Move(_moveVector * (playerSettings.speed * Time.fixedDeltaTime));
+        }
 
         private void Gravity()
         {

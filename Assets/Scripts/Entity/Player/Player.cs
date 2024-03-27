@@ -5,9 +5,7 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerSettings playerSettings;
     [SerializeField] private PlayerStats playerStats;
     [SerializeField] private Transform cameraAxisTransform;
-    [SerializeField] private AudioClip[] clips;
     
-    public static AudioClip[] Clips { get; private set; }
     private Animator _animator;
     private AudioSource _audioSource;
     private static readonly int OnAttack = Animator.StringToHash("OnAttack");
@@ -16,7 +14,6 @@ public class Player : MonoBehaviour
     {
         _animator = GetComponentInChildren<Animator>();
         _audioSource = GetComponent<AudioSource>();
-        Clips = clips;
     }
 
     private void OnEnable()
@@ -49,11 +46,12 @@ public class Player : MonoBehaviour
     
     private void RemoveHealth(int dmg)
     {
-        _audioSource.PlayOneShot(clips[3]);
+        _audioSource.PlayOneShot(SoundEvent.Clips[3]);
         playerStats.currentHealth -= dmg;
     }
     private void AddHealth(int hp)
     {
+        _audioSource.PlayOneShot(SoundEvent.Clips[5]);
         playerStats.currentHealth += hp;
         playerStats.currentHealth = Mathf.Clamp(playerStats.currentHealth, 0, playerStats.maxHealth);
     }

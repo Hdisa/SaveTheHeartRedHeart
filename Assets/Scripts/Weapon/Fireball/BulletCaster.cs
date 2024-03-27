@@ -33,6 +33,6 @@ public class BulletCaster : MonoBehaviour
     {
         Fireball fireball = Instantiate(fireballPrefab, bulletSource.position, transform.rotation); 
         fireball.Direction = bulletSource.forward;
-        _audioSource.PlayOneShot(Player.Clips[2]);
+        _audioSource.PlayOneShot(SoundEvent.Clips[2]);
     }
 }

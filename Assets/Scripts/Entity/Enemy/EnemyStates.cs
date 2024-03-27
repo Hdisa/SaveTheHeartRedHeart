@@ -16,7 +16,8 @@ public class EnemyStates : MonoBehaviour
     private Player _player;
     private State _currentState;
     private Animator _animator;
-    
+    private static readonly int IsReachedPlayer = Animator.StringToHash("IsReachedPlayer");
+
     private void Awake()
     {
         _player = GetComponent<Player>();
@@ -126,7 +127,7 @@ public class EnemyStates : MonoBehaviour
             if (enemy._player == null) enemy.SwitchState(new PatrolState());
             if (Vector3.Distance(enemy.transform.position, enemy._player.transform.position) <= enemy.attackDistance)
             {
-                enemy._animator.SetTrigger("IsReachedPlayer");
+                enemy._animator.SetTrigger(IsReachedPlayer);
             }
             else enemy.SwitchState(new ChaseState());
         }

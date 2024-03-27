@@ -11,13 +11,8 @@ public class PlayerInput : MonoBehaviour
     public static Action OnMoveRight;
     public static Action OnJump;
 
-    private void Start()
-    {
-        InitializeComponents();
-    }
-    
-    private void InitializeComponents()
-    {
+    private void Awake()
+    { 
         characterController = GetComponent<CharacterController>();
     }
 
