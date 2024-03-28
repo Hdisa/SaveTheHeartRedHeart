@@ -29,7 +29,32 @@ using UnityEngine;
 
         private void Update()
         {
-            
+            _moveVector = Vector3.zero;
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                _moveVector += transform.forward;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                _moveVector -= transform.forward;
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                _moveVector += transform.right;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                _moveVector -= transform.right;
+            }
+
+            //Jump
+            if (Input.GetKeyDown(KeyCode.Space) && characterController.isGrounded)
+            {
+                _animator.SetTrigger(IsJump);
+                _audioSource.PlayOneShot(SoundEvent.Clips[1]);
+                _fallVelocity = -playerSettings.jumpForce;
+            }
             
             if (_moveVector != Vector3.zero)
             {
@@ -39,7 +64,6 @@ using UnityEngine;
             }
             else
                 _animator.SetBool(IsWalk, false);
-            StopPlayer();
         }
 
         private void StopPlayer()
@@ -49,7 +73,7 @@ using UnityEngine;
 
         private void Forward()
         {
-            _moveVector += transform.forward;
+            _moveVector -= transform.forward;
         } 
 
         private void Left()

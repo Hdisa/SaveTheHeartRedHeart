@@ -18,6 +18,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Input.GetKey(playerSettings.forward))
             OnMoveForward.Invoke();
         if (Input.GetKey(playerSettings.left))
@@ -28,5 +29,6 @@ public class PlayerInput : MonoBehaviour
             OnMoveRight.Invoke();
         if (Input.GetKey(playerSettings.jump) && characterController.isGrounded)
             OnJump.Invoke();
+            */
     }
 }
